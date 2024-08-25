@@ -1,5 +1,5 @@
 'use client'
-import { FeaturedProducts, Hero } from "@/components/layout";
+import { FAQSection, FeaturedProducts, Hero, TestimonialsSection, TrendySection, WhatWeDoSection } from "@/components/layout";
 import React from "react";
 
 
@@ -10,6 +10,10 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between">
       <Hero />
       <FeaturedProducts />
+      <TrendySection />
+      <WhatWeDoSection />
+      <TestimonialsSection />
+      <FAQSection />
     </main>
   );
 }
