@@ -10,8 +10,12 @@ export {
     CarouselPrevious,
     CarouselNext,
     CarouselThumbnails,
-  
+    CarouselDots,
   } from './carousel';
+
+  export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible';
+
+  export { Input } from './input';
 
   export {
     Select,

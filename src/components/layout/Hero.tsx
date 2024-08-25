@@ -59,7 +59,7 @@ const Hero = () => {
             <CarouselContent className="relative h-full">
               {
                 productImages.map((image, index) => (
-                  <CarouselItem key={index} className="h-full pl-0">
+                  <CarouselItem key={index} className="h-full !ml-2">
                     <div className="relative border-[#89898949] border-[0.3px] rounded-md h-full ">
                       <Image
                         alt={`Product image ${index + 1}`}

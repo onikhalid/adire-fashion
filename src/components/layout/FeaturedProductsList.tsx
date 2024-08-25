@@ -71,25 +71,7 @@ const FeaturedProductsList: React.FC<ProductsComponentProps> = ({ products }) =>
 
             <footer className="flex items-center justify-center gap-4 flex-wrap text-sm py-8">
                 <div className="flex items-center gap-4 flex-wrap text-sm">
-                    <label className="max-md:hidden">Products per page: </label>
-                    <Select value={itemsPerPage} onValueChange={(newValue) => setItemPerPage(newValue)} >
-                        <SelectTrigger className="w-[60px]">
-                            <SelectValue defaultValue="10" placeholder="Select items per page" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                                <SelectLabel>Repos per page:</SelectLabel>
-                                <SelectItem value="5">5</SelectItem>
-                                <SelectItem value="10">10</SelectItem>
-                                <SelectItem value="20">20</SelectItem>
-                                <SelectItem value="50">50</SelectItem>
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
-                </div>
-
-                <div className="flex items-center gap-4 flex-wrap text-sm">
-                    <label>Page: </label>
+                    <label className="sr-only">Page: </label>
                     <button
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}

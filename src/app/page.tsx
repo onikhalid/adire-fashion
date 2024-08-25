@@ -1,5 +1,5 @@
 'use client'
-import { FAQSection, FeaturedProducts, Hero, TestimonialsSection, TrendySection, WhatWeDoSection } from "@/components/layout";
+import { FAQSection, FeaturedProducts, FooterSection, Hero, TestimonialsSection, TrendySection, WhatWeDoSection } from "@/components/layout";
 import React from "react";
 
 
@@ -14,6 +14,7 @@ export default function Home() {
       <WhatWeDoSection />
       <TestimonialsSection />
       <FAQSection />
+      <FooterSection />
     </main>
   );
 }

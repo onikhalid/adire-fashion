@@ -80,12 +80,12 @@ const Carousel = React.forwardRef<
         const [canScrollNext, setCanScrollNext] = React.useState(false)
 
         const onSelect = React.useCallback(() => {
-            if (!api || !thumbsApi) return
+            if (!api) return
             setSelectedIndex(api.selectedScrollSnap())
-            thumbsApi.scrollTo(api.selectedScrollSnap())
             setCanScrollPrev(api.canScrollPrev())
             setCanScrollNext(api.canScrollNext())
-        }, [api, thumbsApi])
+        }, [api])
+
 
         const scrollPrev = React.useCallback(() => {
             api?.scrollPrev()
@@ -117,16 +117,15 @@ const Carousel = React.forwardRef<
         }, [api, setApi])
 
         React.useEffect(() => {
-            if (!api) {
-                return
-            }
+            if (!api) return
 
             onSelect()
-            api.on("reInit", onSelect)
             api.on("select", onSelect)
+            api.on("reInit", onSelect)
 
             return () => {
-                api?.off("select", onSelect)
+                api.off("select", onSelect)
+                api.off("reInit", onSelect)
             }
         }, [api, onSelect])
 
@@ -349,6 +348,66 @@ const CarouselThumbnails = React.forwardRef<
 })
 CarouselThumbnails.displayName = "CarouselThumbnails"
 
+interface CarouselDotsProps extends React.HTMLAttributes<HTMLDivElement> {
+    dotClassName?: string;
+    activeDotClassName?: string;
+    size?: 'sm' | 'md' | 'lg';
+}
+
+const dotSizes = {
+    sm: 'w-2 h-2',
+    md: 'w-3 h-3',
+    lg: 'w-4 h-4',
+};
+
+const CarouselDots = React.forwardRef<HTMLDivElement, CarouselDotsProps>(
+    ({ className, dotClassName, activeDotClassName, size = 'sm', ...props }, ref) => {
+        const { api, selectedIndex } = useCarousel();
+        const [slideCount, setSlideCount] = React.useState(0);
+
+        React.useEffect(() => {
+            console.log('CarouselDots: selectedIndex changed to', selectedIndex);
+        }, [selectedIndex]);
+
+        React.useEffect(() => {
+            if (!api) return;
+            const count = api.scrollSnapList().length;
+            console.log('CarouselDots: slideCount set to', count);
+            setSlideCount(count);
+        }, [api]);
+
+
+        return (
+            <div
+                ref={ref}
+                className={cn("flex justify-center space-x-2 mt-4", className)}
+                {...props}
+            >
+                {[...Array(slideCount)].map((_, index) => (
+                    <button
+                        key={index}
+                        className={cn(
+                            dotSizes[size],
+                            "rounded-full transition-all",
+                            index === selectedIndex
+                                ? cn("bg-foreground scale-125", activeDotClassName)
+                                : cn("bg-foreground/50", dotClassName)
+                        )}
+                        onClick={() => api?.scrollTo(index)}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                ))}
+            </div>
+        );
+    }
+);
+
+CarouselDots.displayName = "CarouselDots"
+
+
+
+
+
 export {
     type CarouselApi,
     Carousel,
@@ -356,5 +415,6 @@ export {
     CarouselItem,
     CarouselPrevious,
     CarouselNext,
-    CarouselThumbnails
+    CarouselThumbnails,
+    CarouselDots
 }
