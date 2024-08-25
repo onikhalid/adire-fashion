@@ -41,7 +41,7 @@ const FooterSection = () => {
                             <Link href='/'>Pricing</Link>
                         </li>
                     </ul>
-                    
+
                     <ul className='flex flex-col gap-3 mt-4 text-sm text-[#7F848D]'>
                         <li>
                             <Link href='/'>Privacy policy</Link>
