@@ -9,10 +9,10 @@ const FooterSection = () => {
                 <section className='flex flex-col gap-4'>
                     <Link href='/'>
                         <Image
-                            src='/images/logo.png'
+                            src='/images/TRYBLogo.png'
                             alt='Logo'
-                            width={200}
-                            height={50}
+                            width={50}
+                            height={10}
                         />
                     </Link>
 

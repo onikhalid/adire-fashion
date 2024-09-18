@@ -36,7 +36,7 @@ const FeaturedProducts: React.FC = () => {
 
   return (
     <section className="pt-16 pb-8 max-w-[1440px] w-[90%] mx-auto">
-      <h2 className="font-medium text-5xl text-center">Our featured store</h2>
+      <h2 className="font-medium text-5xl text-center font-display uppercase">Our featured store</h2>
       <div className='relative lg:grid grid-cols-[0.3fr,0.7fr]'>
         <FeaturedProductsFilter setFilterUrl={setFilterUrl} />
         <FeaturedProductsList products={products} />

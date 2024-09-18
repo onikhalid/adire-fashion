@@ -41,7 +41,7 @@ const FAQSection = () => {
 
     return (
         <section className='relative w-full max-w-[1560px] mx-auto my-20'>
-            <h3 className="font-medium text-5xl text-center">Frequently Asked questions</h3>
+            <h3 className="font-medium text-5xl text-center font-display uppercase tracking-wider">Frequently Asked questions</h3>
 
             <div className='flex flex-col lg:grid grid-cols-[1fr,0.7fr] items-stretch max-w-[1200px] mx-auto mt-12'>
                 <div className=''>

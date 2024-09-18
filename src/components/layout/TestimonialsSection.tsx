@@ -39,7 +39,7 @@ const TestimonialsSection = () => {
 
   return (
     <div className='relative w-full max-w-[1560px] mx-auto my-20'>
-      <h3 className="font-medium text-5xl text-center text-balance">What people all over the world are saying about us</h3>
+      <h3 className="font-medium text-5xl text-center text-balance font-display uppercase tracking-wider max-w-[25ch] mx-auto">What people all over the world are saying about us</h3>
 
       <div className='flex flex-col w-full'>
         <Carousel className='w-full md:w-[90%] h-full max-w-[1360px] mx-auto mt-8'

@@ -32,13 +32,14 @@ const Header: React.FC<Props> = ({ className }) => {
 
     return (
         <header className={cn('fixed top-0 z-10 flex items-center justify-between gap-4 bg-background p-4 px-8 rounded-full w-full', className)}>
-            <Link href='/'>
+            <Link href='/' className='flex items-center gap-2 text-xl font-display'>
                 <Image
-                    src='/images/logo.png'
+                    src='/images/TRYBLogo.png'
                     alt='Logo'
-                    width={200}
-                    height={50}
+                    width={40}
+                    height={40}
                 />
+                TRYB FASHION
             </Link>
 
             <ul className='flex items-center gap-4'>
