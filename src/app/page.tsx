@@ -4,9 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Share2, ShoppingCart, Instagram, Twitter, Facebook, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
 export default function Component() {
+  const router = useRouter()
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const images = [
@@ -100,7 +103,7 @@ export default function Component() {
               <Link href="#" className="block hover:text-primary">
                 Blog
               </Link>
-              <Link href="#" className="block hover:text-primary">
+              <Link href="/shop-page" className="block hover:text-primary">
                 Shop
               </Link>
               <button className="w-full rounded-full bg-white px-6 py-2 text-sm font-semibold text-black">
@@ -119,7 +122,7 @@ export default function Component() {
             transition={{ duration: 0.5 }}
             className="relative w-full md:w-1/2 h-full overflow-hidden"
           >
-            <div className="absolute inset-0 bg-black/50 z-10"></div>
+            <div className="absolute inset-0 bg-black/20 z-10"></div>
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentImageIndex}
@@ -172,7 +175,9 @@ export default function Component() {
             </p>
 
             <div className="flex space-x-4">
-              <button className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all">
+              <button onClick={()=>{
+                  router.push('/shop-page')
+              }} className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all">
                 Shop Now
               </button>
               <button className="border border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all">
